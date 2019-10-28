@@ -29,35 +29,26 @@ async function CargarPagina() {
 
     function setFuncionesBoton(cantInputs, titulo_editar, titulo_borrar, claseTabla, claseInfo) {
         //le asigno a todos los botones "editar" varias funcionalidades
-        let btn_editar = document.getElementsByClassName("btn_editar");
-        let btn_borrar = document.getElementsByClassName("btn_borrar");
-        for (let i = 0; i < btn_editar.length; i++) {
-            btn_editar[i].addEventListener("click", function() {setFila(i)});
-            btn_editar[i].addEventListener("click", function() {showInputs(i, claseTabla, claseInfo, cantInputs)});
-            btn_editar[i].addEventListener("click", function() {showBotonFinalizado(i, claseTabla)});
-            btn_editar[i].addEventListener("click", function() {cambiarTitulos(btn_borrar[i], titulo_editar, titulo_borrar)});
-        }
+        let btn_editar = document.getElementsByClassName("btn_editar")[0];
+        let btn_borrar = document.getElementsByClassName("btn_borrar")[0];
+        btn_editar.addEventListener("click", function() {showInputs(claseTabla, claseInfo, cantInputs)});
+        btn_editar.addEventListener("click", function() {showBotonFinalizado(claseTabla)});
+        btn_editar.addEventListener("click", function() {cambiarTitulos(btn_borrar, titulo_editar, titulo_borrar)});
     }
     
-    function setFila(fila) {
-        //esta funcion ingresa en el dom la ultima fila que se clickeo
-        let filaClickeada = document.getElementsByClassName("fila")[0];
-        filaClickeada.value = fila;
-    }
-
-    function showInputs(fila, claseTabla, claseInfo, cantInputs) {
+    function showInputs(claseTabla, claseInfo, cantInputs) {
         //esta funcion se encarga de mostrar los inputs en la fila correspondiente
         //y ocultando la informacion del plato o categoria correspondiente a la fila clickeada.
         for (let columna = 0; columna < cantInputs; columna++) {
-            document.getElementsByClassName(claseTabla)[fila].getElementsByClassName("input_editar")[columna].classList.remove("d-none");
-            document.getElementsByClassName(claseTabla)[fila].getElementsByClassName(claseInfo)[columna].classList.add("d-none");
+            document.getElementsByClassName(claseTabla)[0].getElementsByClassName("input_editar")[columna].classList.remove("d-none");
+            document.getElementsByClassName(claseTabla)[0].getElementsByClassName(claseInfo)[columna].classList.add("d-none");
         }        
     }
 
-    function showBotonFinalizado(fila, claseTabla) {
+    function showBotonFinalizado(claseTabla) {
         //esta funcion muestra el boton "Finalizado" ocultando el boton "Editar"
-        document.getElementsByClassName(claseTabla)[fila].getElementsByClassName("btn_editar")[0].classList.add("d-none");
-        document.getElementsByClassName(claseTabla)[fila].getElementsByClassName("btn_finalizado")[0].classList.remove("d-none");
+        document.getElementsByClassName(claseTabla)[0].getElementsByClassName("btn_editar")[0].classList.add("d-none");
+        document.getElementsByClassName(claseTabla)[0].getElementsByClassName("btn_finalizado")[0].classList.remove("d-none");
     }
 
     function cambiarTitulos(btn_borrar, thEditar, thBorrar) {

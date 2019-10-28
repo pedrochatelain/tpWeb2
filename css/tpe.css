@@ -152,6 +152,10 @@ input.typinput {
 
 @media only screen and (max-width: 767px) {
 
+  .nuestros_platos {
+    font-size: 240% !important;
+  }
+
   .btn-submit {
     font-size: 14px !important;
     margin-top: 3%;
@@ -541,4 +545,8 @@ td {
 
 .formLogin h1 {
   font-size: 300%;
+}
+
+input[type=text], input[type=number], select {
+  width: 80px !important;
 }

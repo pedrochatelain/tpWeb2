@@ -32,7 +32,7 @@
                         </td>
                         <td>
                             <div class="plato_info nombre_plato"> {$plato->nombre} </div>
-                            <input class="input_editar d-none" name='nombre' size='4px'>
+                            <input class="input_editar d-none" name='nombre' type="text">
                         </td>
                         <td>
                             <div class="plato_info vegetariano"> {$plato->vegetariano} </div>
