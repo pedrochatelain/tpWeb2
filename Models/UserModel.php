@@ -17,20 +17,5 @@ class UserModel {
 
         return $query->fetch(PDO::FETCH_OBJ);
     }
-
-    public function getById($id) {
-        $query = $this->db->prepare('SELECT * FROM usuarios WHERE id_usuario = ?');
-        $query->execute(array($id));
-
-        return $query->fetch(PDO::FETCH_OBJ);
-    }
-
-    public function addUser() {
-        $user = 'pedrochatelain@gmail.com';
-        $password = 'contrasena';
-        $hash = password_hash($password, PASSWORD_DEFAULT);
-        $query = $this->db->prepare('INSERT INTO usuarios(`username`, `password`) VALUES (?,?)');
-        $query -> execute(array($user, $hash));
-    }
-
+    
 }

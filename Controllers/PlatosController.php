@@ -11,13 +11,14 @@ class PlatosController {
     private $model;
     private $view;
     private $model_categoria;
+    private $user;
 
 	function __construct(){
-
         // barrera para usuario logueado
         $authHelper = new AuthHelper();
         $authHelper->checkLoggedIn();
-    
+
+        $this->user = $authHelper->getLoggedUser();
         $this->model = new PlatosModel();
         $this->view = new PlatosView();
         $this->model_categoria = new CategoriasModel();
@@ -29,9 +30,27 @@ class PlatosController {
         $this->view->displayPlatos($platos, $categorias);
     }
 
-    public function addPlato(){
-        $tipo = $this->model_categoria->getCategoriaByID($_POST['id_categoria'])->tipo;
-        $this->model->addPlato($tipo,$_POST['nombre'],$_POST['vegetariano'],$_POST['tacc'],$_POST['vegano'],$_POST['precio'], $_POST['id_categoria']);
+    public function addPlato() {
+        /*
+            Creo las variables correspondientes a cada valor de un plato 
+            y, en caso de que la variable sea un string, la paso a mayuscula.
+            Ejemplo: ensalada -> ENSALADA.
+            Luego, si el usuario es administrador invoco a "addPlato" de model
+            y redirecciono a la página BASE_URL
+
+        */
+
+        $nombre = strtoupper($_POST['nombre']);
+        $vegetariano = strtoupper($_POST['vegetariano']);
+        $tacc = strtoupper($_POST['tacc']);
+        $vegano = strtoupper($_POST['vegano']);
+        $precio = $_POST['precio'];
+        $id_categoria = $_POST['id_categoria'];
+
+        if ($this->user->administrador == 1) {
+            $this->model->addPlato($nombre, $vegetariano, $tacc, $vegano, $precio, $id_categoria);
+        }
+        
         header("Location: " . BASE_URL);
     }
 
@@ -39,23 +58,47 @@ class PlatosController {
         $idPlato = $params[':ID'];
         $plato = $this->model->get($idPlato);
         $categorias = $this->model_categoria->getCategorias();
-        if ($plato) // si existe el plato
+
+        // si existe el plato...
+        if ($plato) 
             $this->view->displayPlato($plato, $categorias);
         else
             $this->view->showError('El plato no existe');
     }
 
-    public function editarPlato() {
-        $fila = $_POST['fila'];
-        $tipo = $this->model_categoria->getCategoriaByID($_POST['editar_tipo'][$fila])->tipo;
-        $this->model->editarPlato($_POST['id_plato'][$fila], $tipo, $_POST['editar_nombre'][$fila], $_POST['editar_vegetariano'][$fila], $_POST['editar_tacc'][$fila], $_POST['editar_vegano'][$fila], $_POST['editar_precio'][$fila], $_POST['editar_tipo'][$fila]);
-        //redirecciono a la pagina donde esta el plato
-        header("Location: " . BASE_URL . "platos/" . $_POST['id_plato'][$fila] );
+    public function editarPlato($params = null) {
+        /*
+            Dado un id, creo las variables correspondientes a cada valor de un plato 
+            y, en caso de que la variable sea un string, la paso a mayuscula.
+            Ejemplo: ensalada -> ENSALADA.
+            Luego, si el usuario es administrador invoco a "editarPlato" de model
+            y redirecciono a la página donde está el plato que se editó
+        */
+
+        $id_plato = $params[':ID'];
+        $nombre = strtoupper($_POST['nombre']);
+        $vegetariano = strtoupper($_POST['vegetariano']);
+        $tacc = strtoupper($_POST['tacc']);
+        $vegano = strtoupper($_POST['vegano']);
+        $precio = $_POST['precio'];
+        $id_categoria = $_POST['id_categoria'];
+
+        if ($this->user->administrador == 1) { 
+            $this->model->editarPlato(
+                $id_plato, $nombre, $vegetariano, $tacc, $vegano, $precio, $id_categoria);
+        }
+
+        header("Location: " . BASE_URL . "platos/" . $id_plato);
     }
 
     public function deletePlato($params = null){
         $idPlato = $params[':ID'];
-        $this->model->deletePlato($idPlato);
+
+        // si es administrador...
+        if ($this->user->administrador == 1) { 
+            $this->model->deletePlato($idPlato);
+        }
+
         header("Location: " . BASE_URL);
     }
 }

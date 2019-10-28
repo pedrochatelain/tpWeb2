@@ -1,6 +1,6 @@
 
 .btn {
-  background-color: #9ec65d;
+  background-color: rgb(188, 228, 123);
   border: none;
   color: black;
   padding: 16px 32px;
@@ -151,10 +151,96 @@ input.typinput {
 }
 
 @media only screen and (max-width: 767px) {
+
+  .btn-submit {
+    font-size: 14px !important;
+    margin-top: 3%;
+    background: rgb(168, 208, 103);
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .div_btn_agregar {
+    display: grid !important;
+    justify-content: left !important;
+  }
+  
+  .btn_agregar {
+    display: grid !important;
+
+    padding: 10% !important;
+    font-size: 110% !important;
+    margin: 0 !important;
+  }
+
+  select, input[type=text], input[type=number] {
+    width: 50%;
+  }
+
+  input, select {
+    font-size: 80% !important;
+  }
+
+  .inner_input {
+    width: auto !important;
+    height: auto !important;
+    font-size: 80%;
+    display: inline-block;
+  }
+
+
   .navbar-brand .nombre, .aptdsk, .container.imgmuestra, img.logodsk, .img-desktop, img.mave, .imgplatos, .msj_redes_sociales{
     display: none;
   }
+
+  .navbar-collapse {
+    margin-left: 0 !important;
+  }
+
+  .titulo_login {
+    font-size: 110% !important;
+  }
+
+  .formPlatos h2 {
+    font-size: 130% !important;
+  }
+
+  .formLogin h1, .formPlatos h1 {
+    font-size: 200% !important;
+  }
+
+  .navbar-nav {
+    display: grid !important;
+    justify-content: center;
+    margin-bottom: 3%;
+  }
+
+  .formLogin, .formPlatos {
+    width: 80% !important;
+    display: grid;
+    justify-content: center;
+    padding: 5% !important;
+
+  }
   
+  .form-control {
+    font-size: 70%;
+  }
+
+  .btn {
+    margin: 5% ;
+    font-size: 90% ;
+    padding: 10%;
+    width: 100%;
+  }
+
+  
+  .h1 {
+    font-size: 90% !important;
+  }
   .navbar {
     padding: 0;
   }
@@ -204,10 +290,6 @@ input.typinput {
   .navbar-brand .nombre {
     display: initial;
     font-size: 150%;
-  }
-
-  img.logomob {
-    display: initial;
   }
 
   img.logodsk, img.mave {
@@ -273,15 +355,9 @@ input.typinput {
 
 @media only screen and (min-width: 1024px) {
 
-  .carouselExampleControls {
-    display: none;
-  }
 
-  a.navbar-brand {
-    margin-right: 12%;
-  }
-
-  .carousel.slide, img.logomob {
+  
+  img.logomob {
       display: none;
   }
 
@@ -352,7 +428,7 @@ input.typinput {
 
 .formPlatos h2 {
   font-family: 'real_miamiregular', Arial, sans-serif;
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .formPlatos form {
@@ -443,11 +519,26 @@ td {
   margin-top: 3%;
 }
 
-.formLogin {
+.formLogin, .formPlatos {
   margin-top: 6%;
+  margin-bottom: 6% !important;
   background: linear-gradient(#9ec65d, #8aa83f);
 }
 
+
+
 .usuario {
   margin: 23%;
+}
+
+.navbar-collapse {
+  margin-left: 12%;
+}
+
+.titulo_login {
+  font-size: 150%;
+}
+
+.formLogin h1 {
+  font-size: 300%;
 }

@@ -1,7 +1,13 @@
 <?php
+require_once('./models/UserModel.php');
 
 class AuthHelper {
-    public function __construct() {}
+
+    private $model;
+
+    public function __construct() {
+        $this->model = new UserModel();
+    }
 
     public function login($user) {
         // INICIO LA SESSION Y LOGUEO AL USUARIO
@@ -24,15 +30,10 @@ class AuthHelper {
         }       
     }
 
-    public function getLoggedUserAdmin() {
+    public function getLoggedUser() {
         if (session_status() != PHP_SESSION_ACTIVE)
             session_start();
-        return $_SESSION['ADMIN'];
+        return $this->model->getByUsername($_SESSION['USERNAME']);
     }
 
-    public function getLoggedUserName() {
-        if (session_status() != PHP_SESSION_ACTIVE)
-            session_start();
-        return $_SESSION['USERNAME'];
-    }
 }

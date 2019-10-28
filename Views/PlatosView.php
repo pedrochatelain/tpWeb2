@@ -8,15 +8,16 @@ require_once('helpers/auth.helper.php');
 class PlatosView {
 
     private $smarty;
+    private $authHelper;
+    private $user;
 
     function __construct(){
-        $authHelper = new AuthHelper();
-        $userName = $authHelper->getLoggedUserName();
-        $userAdmin = $authHelper->getLoggedUserAdmin();
+        $this->authHelper = new AuthHelper();
         $this->smarty = new Smarty();
+        $this->user= $this->authHelper->getLoggedUser();
         $this->smarty->assign('basehref', BASE_URL);
-        $this->smarty->assign('userName', $userName);
-        $this->smarty->assign('userAdmin', $userAdmin);
+        $this->smarty->assign('userName', $this->user->username);
+        $this->smarty->assign('userAdmin', $this->user->administrador);
     }
 
     public function showError($msgError) {

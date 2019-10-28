@@ -22,7 +22,7 @@
         </a>
       
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <ul class="navbar-nav">
                 <a href="platos" class="text-dark nounderline">
                     <li class="nav-item">
                         <li class="item rounded-pill">Platos</li>

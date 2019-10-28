@@ -11,39 +11,33 @@ class CategoriasModel {
     public function getCategorias(){
         $query = $this->db->prepare( "SELECT * FROM categoria");
         $query->execute();
-        
-        return $query->fetchAll(PDO::FETCH_OBJ);
-    }
+        $categorias = $query->fetchAll(PDO::FETCH_OBJ);
 
-    public function getCategoriaByID($id) {
-        //dado un id, devuelve el nombre de la categoria
-        $sentencia = $this->db->prepare( "SELECT * FROM categoria where id_categoria = $id");
-        $sentencia -> execute();
-        $cat = $sentencia->fetch(PDO::FETCH_OBJ);
-        return $cat;
+        return $categorias;
     }
     
-    public function get($id) {
+    public function getCategoria($id) {
         $query = $this->db->prepare('SELECT * FROM categoria WHERE id_categoria = ?');
         $query->execute(array($id));
+        $categoria = $query->fetch(PDO::FETCH_OBJ);
 
-        return $query->fetch(PDO::FETCH_OBJ);
+        return $categoria;
     }
 
     public function addCategoria($tipo,$descripcion){
-        $sentencia = $this->db->prepare("INSERT INTO categoria(tipo, descripcion) VALUES(?,?)");
-        $sentencia->execute(array(strtoupper($tipo),strtoupper($descripcion)));
+        $query = $this->db->prepare("INSERT INTO categoria(tipo, descripcion) VALUES(?,?)");
+        $query->execute(array($tipo,$descripcion));
     }
 
     public function editarCategoria($id_categoria, $tipo, $descripcion){
-        $sentencia = $this->db->prepare("UPDATE categoria SET tipo = ?, descripcion = ?
+        $query = $this->db->prepare("UPDATE categoria SET tipo = ?, descripcion = ?
         WHERE id_categoria = ?");
-        $sentencia->execute(array(strtoupper($tipo), strtoupper($descripcion), $id_categoria));
+        $query->execute(array($tipo, $descripcion, $id_categoria));
     }
 
     public function deleteCategoria($id){
-        $sentencia = $this->db->prepare("DELETE FROM categoria WHERE id_categoria=?");
-        $sentencia->execute(array($id));
+        $query = $this->db->prepare("DELETE FROM categoria WHERE id_categoria=?");
+        $query->execute(array($id));
     }
 }
 
