@@ -18,4 +18,17 @@ class UserModel {
         return $query->fetch(PDO::FETCH_OBJ);
     }
     
+    public function addUser() {
+        // agrega un usuario a la base de datos
+        $username = "guest";
+        $password = "1234";
+        $administrador = 0;
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+
+        $query = $this->db->prepare(
+            "INSERT INTO usuarios(username, `password`, administrador)
+            VALUES (?,?,?)"
+        );
+        $query->execute(array($username, $hash, $administrador));
+    }
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-10-2019 a las 17:44:50
+-- Tiempo de generación: 31-10-2019 a las 00:04:15
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.9
 
@@ -85,8 +85,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `username`, `password`, `administrador`) VALUES
-(1, 'guest', '', 0),
-(3, 'pedrochatelain@gmail.com', '$2y$10$cuWaES49egLeaU2sqHPSnO/RuKJUzKk13/y7ad.sx9tzpWXj5pquq', 1);
+(3, 'pedrochatelain@gmail.com', '$2y$10$cuWaES49egLeaU2sqHPSnO/RuKJUzKk13/y7ad.sx9tzpWXj5pquq', 1),
+(4, 'guest', '$2y$10$1iYHVCWY26Zkt/oYfcT3uuElqBTCbexM7NRq3IiLbrHJFuBQcwJsu', 0);
 
 --
 -- Índices para tablas volcadas
@@ -120,7 +120,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 
 --
 -- AUTO_INCREMENT de la tabla `plato`
@@ -132,7 +132,7 @@ ALTER TABLE `plato`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas

@@ -31,9 +31,11 @@ async function CargarPagina() {
         //le asigno a todos los botones "editar" varias funcionalidades
         let btn_editar = document.getElementsByClassName("btn_editar")[0];
         let btn_borrar = document.getElementsByClassName("btn_borrar")[0];
-        btn_editar.addEventListener("click", function() {showInputs(claseTabla, claseInfo, cantInputs)});
-        btn_editar.addEventListener("click", function() {showBotonFinalizado(claseTabla)});
-        btn_editar.addEventListener("click", function() {cambiarTitulos(btn_borrar, titulo_editar, titulo_borrar)});
+        if (btn_editar) {
+            btn_editar.addEventListener("click", function() {showInputs(claseTabla, claseInfo, cantInputs)});
+            btn_editar.addEventListener("click", function() {showBotonFinalizado(claseTabla)});
+            btn_editar.addEventListener("click", function() {cambiarTitulos(btn_borrar, titulo_editar, titulo_borrar)});
+        }
     }
     
     function showInputs(claseTabla, claseInfo, cantInputs) {
