@@ -1,12 +1,8 @@
 <?php
-
-require_once('libs/Smarty.class.php');
-require_once('helpers/auth.helper.php');
-
-
+require_once "libs/Smarty.class.php";
+require_once "helpers/auth.helper.php";
 
 class CategoriasView {
-
     private $smarty;
     private $authHelper;
     private $user;
@@ -26,7 +22,6 @@ class CategoriasView {
     }
 
     public function displayCategorias($categorias){
-
         $this->smarty->assign('titulo',"Categorias");
         $this->smarty->assign('lista_categorias', $categorias);
         $this->smarty->display('templates/ver_categorias.tpl');
@@ -38,5 +33,4 @@ class CategoriasView {
         $this->smarty->display('templates/detalle_categoria.tpl');
     }
 }
-
 ?>

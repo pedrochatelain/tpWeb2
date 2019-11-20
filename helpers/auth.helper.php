@@ -1,8 +1,7 @@
 <?php
-require_once('./models/UserModel.php');
+require_once "./models/UserModel.php";
 
 class AuthHelper {
-
     private $model;
 
     public function __construct() {
@@ -35,5 +34,4 @@ class AuthHelper {
             session_start();
         return $this->model->getByUsername($_SESSION['USERNAME']);
     }
-
 }

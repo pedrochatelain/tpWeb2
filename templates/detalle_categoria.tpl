@@ -34,6 +34,7 @@
                             <a class="btn_borrar btn btn-outline-light" role="button"
                                 href='categorias/borrar/{$categoria->id_categoria}'>Borrar
                             </a>
+                            <input class="btn_cancelar btn btn-outline-light d-none" value="Cancelar" type="button">
                         </td>
                         {/if}
                     </tr>

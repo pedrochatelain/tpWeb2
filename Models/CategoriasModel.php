@@ -1,10 +1,8 @@
 <?php
-
 class CategoriasModel {
-
     private $db;
 
-    function __construct(){
+    function __construct() {
         $this->db = new PDO('mysql:host=localhost;'.'dbname=restaurant_np;charset=utf8', 'root', 'root');
     }	
 
@@ -12,7 +10,6 @@ class CategoriasModel {
         $query = $this->db->prepare( "SELECT * FROM categoria");
         $query->execute();
         $categorias = $query->fetchAll(PDO::FETCH_OBJ);
-
         return $categorias;
     }
     
@@ -20,7 +17,6 @@ class CategoriasModel {
         $query = $this->db->prepare('SELECT * FROM categoria WHERE id_categoria = ?');
         $query->execute(array($id));
         $categoria = $query->fetch(PDO::FETCH_OBJ);
-
         return $categoria;
     }
 
@@ -40,5 +36,4 @@ class CategoriasModel {
         $query->execute(array($id));
     }
 }
-
 ?>

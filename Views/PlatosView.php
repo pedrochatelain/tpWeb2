@@ -1,12 +1,8 @@
 <?php
-
-require_once('libs/Smarty.class.php');
-require_once('helpers/auth.helper.php');
-
-
+require_once "libs/Smarty.class.php";
+require_once "helpers/auth.helper.php";
 
 class PlatosView {
-
     private $smarty;
     private $authHelper;
     private $user;
@@ -32,12 +28,13 @@ class PlatosView {
         $this->smarty->display('templates/ver_platos.tpl');
     }
 
-    public function displayPlato($plato, $categorias) {
+    public function displayPlato($plato, $categorias, $images, $comentarios) {
         $this->smarty->assign('titulo',$plato->nombre);
         $this->smarty->assign('plato', $plato);
+        $this->smarty->assign('images',$images);
+        $this->smarty->assign('comentarios', $comentarios);
         $this->smarty->assign('lista_categorias', $categorias);
         $this->smarty->display('templates/detalle_plato.tpl');
     }
 }
-
 ?>
