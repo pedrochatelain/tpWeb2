@@ -134,6 +134,16 @@ input.typinput {
 }
 
 @media only screen and (max-width: 767px) {
+
+  .usuario_comment > h6 {
+    font-size: 70%;
+  }
+
+  .mensaje_comentario {
+    width: 15em !important;
+    word-wrap: break-word;
+  }
+
   .nav_buttons {
     display: grid;
     justify-content: center;
@@ -465,8 +475,8 @@ td {
 }
 
 .tabla_platos,
-.tabla_categorias,
-.tabla_usuarios {
+.tabla_usuarios,
+.tabla_categorias {
   background-color: olivedrab;
   color: whitesmoke;
 }
@@ -645,6 +655,11 @@ input.key {
   margin-left: 1%;
 }
 
+.borrar_comentario {
+  margin-top: 1.5%;
+  height: 50%;
+}
+
 .form_comment {
   display: grid;
   grid-template-columns: 11.11% 11.11% 11.11% 11.11% 11.11% 11.11% 11.11% 11.11% 11.11%;
@@ -698,4 +713,7 @@ input.key {
   font-size: 100%;
 }
 
-
+.mensaje_comentario {
+  width: 60em;
+  word-wrap: break-word;
+}

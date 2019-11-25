@@ -1,13 +1,13 @@
 "use strict";
 async function CargarPagina() {
-    
+
     if (document.body.contains(document.getElementsByClassName("tabla_categorias")[0])) {
         //si existe la clase "tabla_categorias"...
         categorias();
-    }else if (document.body.contains(document.getElementsByClassName("tabla_platos")[0])) {
+    } else if (document.body.contains(document.getElementsByClassName("tabla_platos")[0])) {
         //si existe la clase "tabla_platos"...
         platos();
-    }else if (document.body.contains(document.getElementsByClassName("tabla_usuarios")[0])) {
+    } else if (document.body.contains(document.getElementsByClassName("tabla_usuarios")[0])) {
         //si existe la clase "tabla_usuarios"...
         usuarios();
     }
@@ -46,13 +46,14 @@ async function CargarPagina() {
         let btn_cancelar = document.getElementsByClassName("btn_cancelar")[0];
 
         if (btn_editar) {
-            btn_editar.addEventListener("click", function() {showInputs(claseTabla, claseInfo, cantInputs)});
-            btn_editar.addEventListener("click", function() {showBotonFinalizado(claseTabla)});
-            btn_editar.addEventListener("click", function() {cambiarTitulos(btn_cancelar, btn_borrar, titulo_editar, titulo_borrar)});
+            btn_editar.addEventListener("click", function () { showInputs(claseTabla, claseInfo, cantInputs) });
+            btn_editar.addEventListener("click", function () { llenarInputs(claseInfo, claseTabla, cantInputs) });
+            btn_editar.addEventListener("click", function () { showBotonFinalizado(claseTabla) });
+            btn_editar.addEventListener("click", function () { cambiarTitulos(btn_cancelar, btn_borrar, titulo_editar, titulo_borrar) });
         }
         if (btn_cancelar) {
-            btn_cancelar.addEventListener("click", function() {cancelarEdicion(claseTabla, claseInfo, cantInputs)});
-            btn_cancelar.addEventListener("click", function() {volverTitulos(btn_cancelar, btn_borrar, titulo_editar, titulo_borrar)});
+            btn_cancelar.addEventListener("click", function () { cancelarEdicion(claseTabla, claseInfo, cantInputs) });
+            btn_cancelar.addEventListener("click", function () { volverTitulos(btn_cancelar, btn_borrar, titulo_editar, titulo_borrar) });
 
         }
     }
@@ -64,8 +65,8 @@ async function CargarPagina() {
         btn_cancelar.classList.add("d-none");
     }
 
-     // esta funcion esconde los inputs que se habian generado al clickear "Editar"
-     function cancelarEdicion(claseTabla, claseInfo, cantInputs) {
+    // esta funcion esconde los inputs que se habian generado al clickear "Editar"
+    function cancelarEdicion(claseTabla, claseInfo, cantInputs) {
         document.getElementsByClassName(claseTabla)[0].getElementsByClassName("btn_editar")[0].classList.remove("d-none");
         document.getElementsByClassName(claseTabla)[0].getElementsByClassName("btn_finalizado")[0].classList.add("d-none");
         hideInputs(claseTabla, claseInfo, cantInputs);
@@ -73,21 +74,21 @@ async function CargarPagina() {
         document.getElementsByClassName(claseTabla)[0].getElementsByClassName("btn_cancelar")[0].classList.remove("d-none");
 
     }
-    
+
     function showInputs(claseTabla, claseInfo, cantInputs) {
         //esta funcion se encarga de mostrar los inputs en la fila correspondiente
         //y ocultando la informacion del plato o categoria correspondiente a la fila clickeada.
         for (let columna = 0; columna < cantInputs; columna++) {
             document.getElementsByClassName(claseTabla)[0].getElementsByClassName("input_editar")[columna].classList.remove("d-none");
             document.getElementsByClassName(claseTabla)[0].getElementsByClassName(claseInfo)[columna].classList.add("d-none");
-        }        
+        }
     }
 
     function hideInputs(claseTabla, claseInfo, cantInputs) {
         for (let columna = 0; columna < cantInputs; columna++) {
             document.getElementsByClassName(claseTabla)[0].getElementsByClassName("input_editar")[columna].classList.add("d-none");
             document.getElementsByClassName(claseTabla)[0].getElementsByClassName(claseInfo)[columna].classList.remove("d-none");
-        }        
+        }
     }
 
     function showBotonFinalizado(claseTabla) {
@@ -96,7 +97,7 @@ async function CargarPagina() {
         document.getElementsByClassName(claseTabla)[0].getElementsByClassName("btn_finalizado")[0].classList.remove("d-none");
     }
 
-   
+
 
     function cambiarTitulos(btn_cancelar, btn_borrar, thEditar, thBorrar) {
         //esta funcion se encarga de cambiar los th y el nombre de los botones de borrar y editar
@@ -104,9 +105,33 @@ async function CargarPagina() {
         thBorrar.innerHTML = "Cancelar";
         btn_borrar.classList.add("d-none");
         btn_cancelar.classList.remove("d-none");
-     }
+    }
 
-    
+    function llenarInputs(claseInfo, claseTabla, cantInputs) {
+        // recorro todos los inputs del item seleccionado
+        for (let columna = 0; columna < cantInputs; columna++) {
+            // info : es el valor de la celda en la "columna" actual
+            let info = document.getElementsByClassName(claseTabla)[0].getElementsByClassName
+            (claseInfo)[columna].innerHTML;
+            // input : es el input de la celda la "columna" actual
+            let input = 
+            document.getElementsByClassName(claseTabla)[0].getElementsByClassName("input_editar")[columna];
+            if (input.nodeName == "SELECT") {
+                // options: es la cantidad de "options" que tiene el SELECT
+                let options = input.options.length;
+                // recorro las opciones y si info = texto de la opcion actual, lo defino como selected
+                for (let i = 0; i<options; i++) {
+                    if(info == input.options[i].text) {
+                        input.selectedIndex = i;
+                    }
+                }
+            }
+            if (input.nodeName == "INPUT") {
+                input.value = info;
+            }
+        }
+    }
+
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
     let idFacebook = "facebook";
@@ -127,12 +152,12 @@ async function CargarPagina() {
         //cambia el icono de la red social
         document.getElementById(redSocial).src = ubicacion;
     }
-   
+
     facebook.addEventListener("mouseover", function () { cambiarIcono(idFacebook, fbMouseOver) });
     facebook.addEventListener("mouseout", function () { cambiarIcono(idFacebook, fbMouseOut) });
     instagram.addEventListener("mouseover", function () { cambiarIcono(idInstagram, igMouseOver) });
     instagram.addEventListener("mouseout", function () { cambiarIcono(idInstagram, igMouseOut) });
     twitter.addEventListener("mouseover", function () { cambiarIcono(idTwitter, twMouseOver) });
-    twitter.addEventListener("mouseout", function () { cambiarIcono(idTwitter, twMouseOut) });    
+    twitter.addEventListener("mouseout", function () { cambiarIcono(idTwitter, twMouseOut) });
 }
 document.addEventListener("DOMContentLoaded", CargarPagina);

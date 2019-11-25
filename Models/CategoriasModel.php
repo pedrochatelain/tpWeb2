@@ -36,4 +36,3 @@ class CategoriasModel {
         $query->execute(array($id));
     }
 }
-?>

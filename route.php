@@ -4,7 +4,7 @@ require_once "Controllers/CategoriasController.php";
 require_once "Controllers/LoginController.php";
 require_once "Controllers/SignInController.php";
 require_once "Controllers/UsersController.php";
-require_once "Controllers/ComentariosController.php";
+require_once "Controllers/ImageController.php";
 require_once "Router.php";
     
 // CONSTANTES PARA RUTEO
@@ -29,8 +29,9 @@ $r->addRoute("platos/:ID_PLATO", "GET", "PlatosController", "displayPlato");
 $r->addRoute("insertar", "POST", "PlatosController", "addPlato");
 $r->addRoute("borrar/:ID", "GET", "PlatosController", "deletePlato");
 $r->addRoute("editar/:ID", "POST", "PlatosController", "editarPlato");
-$r->addRoute("upload_image/:ID", "POST", "PlatosController", "addImage");
-$r->addRoute("delete_image/:ID", "POST", "PlatosController", "deleteImage");
+// IMAGENES
+$r->addRoute("upload_image/:ID", "POST", "ImageController", "addImage");
+$r->addRoute("delete_image/:ID", "POST", "ImageController", "deleteImage");
 // LOGIN
 $r->addRoute("login", "GET", "LoginController", "showLogin");
 $r->addRoute("logout", "GET", "LoginController", "logout");
@@ -44,8 +45,6 @@ $r->addRoute("usuarios", "GET", "UsersController", "getUsuarios");
 $r->addRoute("usuarios/:ID", "GET", "UsersController", "displayUser");
 $r->addRoute("usuarios/borrar/:ID", "GET", "UsersController", "deleteUser");
 $r->addRoute("usuarios/editar/:ID", "POST", "UsersController", "editarUsuario");
-// COMENTARIOS
-$r->addRoute("comentar/:ID_PLATO", "POST", "ComentariosController", "addComentario");
 
 //Ruta por defecto.
 $r->setDefaultRoute("PlatosController", "getPlatos");

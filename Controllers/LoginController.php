@@ -47,4 +47,3 @@ class LoginController {
         header('Location: ' . LOGIN);
     }
 }
-?>

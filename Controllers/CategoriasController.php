@@ -11,9 +11,9 @@ class CategoriasController {
 	function __construct(){
         $authHelper = new AuthHelper();
         $authHelper->checkLoggedIn();        
-        $this->user = $authHelper->getLoggedUser();
         $this->model = new CategoriasModel();
         $this->view = new CategoriasView();
+        $this->user = $authHelper->getLoggedUser();
     }
     
     public function getCategorias(){
@@ -57,4 +57,3 @@ class CategoriasController {
         header("Location: " . CATEGORIAS);
     }
 }
-?>

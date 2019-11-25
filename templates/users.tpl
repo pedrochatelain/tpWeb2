@@ -1,7 +1,7 @@
 {include file="header.tpl"}
 
 <div class="container">
-    <h1 class="nuestros_platos"> </h1>
+    <h1 class="nuestros_platos">Usuarios</h1>
     <table>
         <thead>
             <tr>
@@ -10,14 +10,14 @@
                 <th>Detalles</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="tabla">
             {foreach from=$usuarios item=user}
             <tr class='tabla_usuarios'>
                 <td>
-                    <div class="id_usuario"> {$user->id_usuario} </div>
+                    <div class="id_usuario">{$user->id_usuario}</div>
                 </td>
                 <td>
-                    <div class="usuario"> {$user->username} </div>
+                    <div>{$user->username}</div>
                 </td>
                 <td>
                     <a href="usuarios/{$user->id_usuario}">

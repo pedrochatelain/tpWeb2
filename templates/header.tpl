@@ -12,7 +12,6 @@
 </head>
 
 <body>
-
     <nav class="navbar navbar-expand-lg navbar-light" style="background: linear-gradient(#9ec65d, #8aa83f);">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
             aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,7 +23,7 @@
         </a>
         <div class="username">
             {if isset($userName) && $userName != "guest"}
-                {$userName}
+            {$userName}
             {/if}
         </div>
         <div class="nav_buttons">
@@ -65,10 +64,7 @@
                         </li>
                     </a>
                     {/if}
-                    
                 </ul>
-
-
             </div>
         </div>
     </nav>

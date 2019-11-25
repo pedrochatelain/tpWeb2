@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-11-2019 a las 21:14:20
+-- Tiempo de generación: 31-10-2019 a las 00:04:15
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.9
 
@@ -39,45 +39,9 @@ CREATE TABLE `categoria` (
 --
 
 INSERT INTO `categoria` (`id_categoria`, `tipo`, `descripcion`) VALUES
-(112, 'ENTRADA', ''),
+(112, 'ENTRADA', 'INTEGER DIGNISSIM NISL NEC MI BIBENDUM, ID MAXIMUS DUI FACILISIS. IN ET LEO EU NEQUE POSUERE LOBORTIS. NULLAM EGET PLACERAT TELLUS. NAM MOLESTIE SIT AMET TELLUS QUIS VENENATIS. QUISQUE LACINIA CONVALLIS FERMENTUM. DONEC PRETIUM BIBENDUM NISI. CRAS NON ELEIFEND ARCU, VEL LAOREET MI. QUISQUE VESTIBULUM FERMENTUM VELIT ID FERMENTUM.'),
 (114, 'PLATO PRINCIPAL', 'VIVAMUS UT ENIM ALIQUAM, FACILISIS LEO SIT AMET, SEMPER DOLOR. INTEGER SIT AMET LACINIA EX. DONEC BLANDIT MAXIMUS ENIM VEL GRAVIDA. VIVAMUS ULLAMCORPER NUNC IN CONGUE CURSUS. MAURIS NEC SEMPER TELLUS. FUSCE SAGITTIS ULTRICES POSUERE. AENEAN ELEIFEND TINCIDUNT MASSA EU ALIQUAM. NAM SOLLICITUDIN EX DIGNISSIM LIBERO SOLLICITUDIN, VOLUTPAT CONGUE DIAM LAOREET.'),
-(118, 'POSTRE', ''),
-(122, 'SOBREMESA', 'SOBREMESA');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `comentarios`
---
-
-CREATE TABLE `comentarios` (
-  `id_comentario` int(11) NOT NULL,
-  `usuario` varchar(150) NOT NULL,
-  `mensaje` varchar(400) NOT NULL,
-  `puntuacion` int(11) NOT NULL,
-  `id_plato` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `images`
---
-
-CREATE TABLE `images` (
-  `id` int(11) NOT NULL,
-  `image` varchar(200) NOT NULL,
-  `id_plato` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `images`
---
-
-INSERT INTO `images` (`id`, `image`, `id_plato`) VALUES
-(78, 'Cafe-con-leche-recipe-coffee-in-Madrid.jpg', 348),
-(79, 'w700_caf__con_leche1.jpg', 348),
-(80, 'th5-640x426-7456.jpg', 348);
+(118, 'POSTRE', '');
 
 -- --------------------------------------------------------
 
@@ -100,7 +64,8 @@ CREATE TABLE `plato` (
 --
 
 INSERT INTO `plato` (`id_plato`, `nombre`, `vegetariano`, `tacc`, `vegano`, `precio`, `id_categoria`) VALUES
-(348, 'CAFE CON LECHE', 'APTO', 'CONTIENE', 'NO APTO', 299, 122);
+(319, 'LEMON PIE', 'APTO', 'CONTIENE', 'NO APTO', 500, 118),
+(320, 'ARROLLADO DE POLLO', 'NO APTO', 'NO CONTIENE', 'NO APTO', 639, 114);
 
 -- --------------------------------------------------------
 
@@ -120,8 +85,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `username`, `password`, `administrador`) VALUES
-(4, 'guest', '$2y$10$1iYHVCWY26Zkt/oYfcT3uuElqBTCbexM7NRq3IiLbrHJFuBQcwJsu', 0),
-(7, 'pedrochatelain@gmail.com', '$2y$10$bpPjQZIHsEYyRFPaAweB9e8iuvZ156oxA2ilFTzFWlGKWgoZ6E8ia', 1);
+(3, 'pedrochatelain@gmail.com', '$2y$10$cuWaES49egLeaU2sqHPSnO/RuKJUzKk13/y7ad.sx9tzpWXj5pquq', 1),
+(4, 'guest', '$2y$10$1iYHVCWY26Zkt/oYfcT3uuElqBTCbexM7NRq3IiLbrHJFuBQcwJsu', 0);
 
 --
 -- Índices para tablas volcadas
@@ -132,19 +97,6 @@ INSERT INTO `usuarios` (`id_usuario`, `username`, `password`, `administrador`) V
 --
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`id_categoria`);
-
---
--- Indices de la tabla `comentarios`
---
-ALTER TABLE `comentarios`
-  ADD PRIMARY KEY (`id_comentario`);
-
---
--- Indices de la tabla `images`
---
-ALTER TABLE `images`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_plato` (`id_plato`);
 
 --
 -- Indices de la tabla `plato`
@@ -168,31 +120,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
-
---
--- AUTO_INCREMENT de la tabla `comentarios`
---
-ALTER TABLE `comentarios`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT de la tabla `images`
---
-ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 
 --
 -- AUTO_INCREMENT de la tabla `plato`
 --
 ALTER TABLE `plato`
-  MODIFY `id_plato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=354;
+  MODIFY `id_plato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=321;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas

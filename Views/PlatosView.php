@@ -28,11 +28,12 @@ class PlatosView {
         $this->smarty->display('templates/ver_platos.tpl');
     }
 
-    public function displayPlato($plato, $categorias, $images, $comentarios) {
+    public function displayPlato($plato, $categorias, $images, $comentarios, $prom_puntuacion) {
         $this->smarty->assign('titulo',$plato->nombre);
         $this->smarty->assign('plato', $plato);
         $this->smarty->assign('images',$images);
         $this->smarty->assign('comentarios', $comentarios);
+        $this->smarty->assign('prom_puntuacion', $prom_puntuacion);
         $this->smarty->assign('lista_categorias', $categorias);
         $this->smarty->display('templates/detalle_plato.tpl');
     }
