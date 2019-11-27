@@ -25,7 +25,6 @@ async function CargarPagina() {
       .then(response => response.json())
       .then(usuario => {
         app.user = usuario;
-        console.log(usuario);
       })
       .catch(error => console.log(error));
   }
