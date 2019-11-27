@@ -121,7 +121,7 @@ async function CargarPagina() {
                 let options = input.options.length;
                 // recorro las opciones y si info = texto de la opcion actual, lo defino como selected
                 for (let i = 0; i<options; i++) {
-                    if(info == input.options[i].text) {
+                    if(info.trim() == (input.options[i].text).trim()) {
                         input.selectedIndex = i;
                     }
                 }

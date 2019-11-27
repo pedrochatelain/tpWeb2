@@ -20,9 +20,7 @@
                     <div class="plato_info tipo">{$plato->tipo}</div>
                     <select class="input_editar d-none" name='id_categoria'>
                         {foreach from=$lista_categorias item=categoria}
-                        <option value="{$categoria->id_categoria}">
-                            {$categoria->tipo|upper}
-                        </option>
+                        <option value="{$categoria->id_categoria}">{$categoria->tipo|upper}</option>
                         {/foreach}
                     </select>
                 </td>

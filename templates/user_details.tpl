@@ -22,7 +22,13 @@
                         <div> {$user->username} </div>
                     </td>
                     <td>
-                        <div class="admin user_info">{if $user->administrador == 1}SI {else}NO{/if}</div>
+                        <div class="admin user_info">
+                        {if $user->administrador == 1}
+                            SI
+                        {else}
+                            NO
+                        {/if}
+                        </div>
                         <select class="input_editar d-none" name='admin'>
                             <option value="1">SI</option>
                             <option value="0">NO</option>
